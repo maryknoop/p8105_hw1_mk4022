@@ -111,16 +111,34 @@ The median is `r median(pull(df_problem2, x))`.
 The standard deviation is `r sd(pull(df_problem2, x))`. 
 The proportion of cases for which x + Y > 1 is `r mean(pull(df_problem2, log_vec_2))`.
 
+HW1 Problem 2:
+Part C
 
-```{r descriptive_stats}
-#code for each individual descriptive stat found above in the inline R code
-nrow(df_problem2)
-ncol(df_problem2)
-mean(pull(df_problem2, x))
-sd(pull(df_problem2, x))
-mean(pull(df_problem2, log_vec_2))
+Make a scatterplot of y vs x; color points using the logical variable 
+
+Export your first scatterplot to your project directory using ggsave.
+
+```{r scatterplot_1}
+#load library and create scatterplot 1
+library(ggplot2)
+ggplot(df_problem2, aes(x=x, y=y, color = log_vec_2)) + geom_point()
+#export scatterplot_1
+ggsave("scatterplot_1.pdf", plot = last_plot(), height = 4, width = 6)
 ```
 
+
+HW1 Problem 2:
+Part D
+
+Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales.
+
+Color scales for scatterplot 1 and 3 with 'true/false' only is comprised of two colors (one for true and one for false) and color scale for scatterplot 2 with a scale from 0 to 100 is comprised of a gradient moving from black at 0 to blue at 100. 
+
+```{r scatterplot_2_3}
+#create scatterplot 2 and 3
+ggplot(df_problem2, aes(x=x, y=y, color = num_vec_2)) + geom_point()
+ggplot(df_problem2, aes(x=x, y=y, color = factor_vec_2)) + geom_point()
+```
 
 
 
