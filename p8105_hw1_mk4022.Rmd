@@ -71,11 +71,55 @@ convert the logical vector to a factor and then convert the result to numeric, a
 Note that converting the log_vec to a factor and multiplying produces an error 'not meaningful for factors' since factors are not numeric variables. 
 
 ```{r convert_and_multiply}
+#convert variables and multiple variables
 as.numeric(pull(df_problem1, log_vec))*(pull(df_problem1, norm_samp))
 as.factor(pull(df_problem1, log_vec))*(pull(df_problem1, norm_samp))
 as.numeric((as.factor(pull(df_problem1, log_vec))))*(pull(df_problem1, norm_samp))
 ```
 
+
+HW1 Problem 2: 
+Part A:
+
+Create a data frame comprised of:
+x: a random sample of size 500 from a standard Normal distribution
+y: a random sample of size 500 from a standard Normal distribution
+A logical vector indicating whether x + y > 1
+A numeric vector created by coercing the above logical vector
+A factor vector created by coercing the above logical vector
+
+```{r create_df_2}
+#create a new dataframe for problem 2
+set.seed(4321)
+df_problem2 = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  log_vec_2 = x + y > 1,
+  num_vec_2 = as.numeric(log_vec_2),
+  factor_vec_2 = as.factor(log_vec_2)
+)
+```
+
+HW1 Problem 2:
+Part B
+
+Write a short description of your vector using inline R code, including: * the size of the dataset (using nrow and ncol) * the mean, median, and standard deviation of x * the proportion of cases for which x + y > 1
+
+The size of data frame titled 'df_problem2' is quantified by having `r nrow(df_problem2)` rows and `r ncol(df_problem2)` columns. 
+The mean of variable x is `r mean(pull(df_problem2, x))`. 
+The median is `r median(pull(df_problem2, x))`. 
+The standard deviation is `r sd(pull(df_problem2, x))`. 
+The proportion of cases for which x + Y > 1 is `r mean(pull(df_problem2, log_vec_2))`.
+
+
+```{r descriptive_stats}
+#code for each individual descriptive stat found above in the inline R code
+nrow(df_problem2)
+ncol(df_problem2)
+mean(pull(df_problem2, x))
+sd(pull(df_problem2, x))
+mean(pull(df_problem2, log_vec_2))
+```
 
 
 
