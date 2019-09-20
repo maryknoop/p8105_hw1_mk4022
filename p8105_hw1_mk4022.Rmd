@@ -16,7 +16,10 @@ a random sample of size 8 from a standard Normal distribution,
 a logical vector indicating whether elements of the sample are greater than 0,
 a character vector of length 8, and
 a factor vector of length 8, with 3 different factor “levels”
+
+
 ```{r create_df}
+#create dataframe
 library(tidyverse)
 set.seed(1234)
 df_problem1 = tibble(
@@ -25,7 +28,16 @@ df_problem1 = tibble(
   char_vec = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "January", "February", "March"),
   factor_vec = factor(c("day","week","month","day","week","month","day","week"))
 )
+
+# take means of each variable
+mean(pull(df_problem1, norm_samp))
+mean(pull(df_problem1, log_vec))
+mean(pull(df_problem1, char_vec))
+mean(pull(df_problem1, factor_vec))
 ```
+
+
+
 
 
 
