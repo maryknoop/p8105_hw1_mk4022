@@ -9,15 +9,15 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+
+
 HW 1 Problem 1:
-Part A
-Create a data frame comprised of:
-
-a random sample of size 8 from a standard Normal distribution,
-a logical vector indicating whether elements of the sample are greater than 0,
-a character vector of length 8, and
-a factor vector of length 8, with 3 different factor “levels”
-
+Part A: Create a data frame comprised of:
+* a random sample of size 8 from a standard Normal distribution
+* a logical vector indicating whether elements of the sample are greater than 0
+* a character vector of length 8
+* a factor vector of length 8, with 3 different factor “levels”
 
 ```{r create_df}
 #create dataframe
@@ -31,12 +31,11 @@ df_problem1 = tibble(
 )
 ```
 
+
+
+
 HW 1 Problem 1:
-Part B
-
-Try to take the mean of each variable in your dataframe
-
-Note we cannot obtain the mean for char_vec and factor_vec since they are not numeric variables
+Part B: Try to take the mean of each variable in your dataframe
 
 ```{r means}
 # take means of each variable
@@ -45,12 +44,13 @@ mean(pull(df_problem1, log_vec))
 mean(pull(df_problem1, char_vec))
 mean(pull(df_problem1, factor_vec))
 ```
+Note: We cannot obtain the mean for char_vec and factor_vec since they are not numeric variables
+
+
+
 
 HW1 Problem 1: 
-Part C
-Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output).
-
-Note that converting the log_vec produces an output with all 0's and 1's, converting char_vec produces an error, and converting factor_vec transforms the various inputs into 1's, 2's, and 3's corresponding to their matching factor. 
+Part C: Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output).
 
 ```{r eval = FALSE}
 #convert variables without showing output using eval = False to begin new chunk
@@ -58,17 +58,16 @@ as.numeric(pull(df_problem1,log_vec))
 as.numeric(pull(df_problem1,char_vec))
 as.numeric(pull(df_problem1,factor_vec))
 ```
+Note: Converting the log_vec produces an output with all 0's and 1's, converting char_vec produces an error, and converting factor_vec transforms the various inputs into 1's, 2's, and 3's corresponding to their matching factor.
+
+
 
 
 HW1 Problem 1: 
-Part D
-In a second code chunk:
-
-convert the logical vector to numeric, and multiply the random sample by the result,
-convert the logical vector to a factor, and multiply the random sample by the result,
-convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
-
-Note that converting the log_vec to a factor and multiplying produces an error 'not meaningful for factors' since factors are not numeric variables. 
+Part D: In a second code chunk:
+* convert the logical vector to numeric, and multiply the random sample by the result,
+* convert the logical vector to a factor, and multiply the random sample by the result,
+* convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
 
 ```{r convert_and_multiply}
 #convert variables and multiple variables
@@ -76,17 +75,18 @@ as.numeric(pull(df_problem1, log_vec))*(pull(df_problem1, norm_samp))
 as.factor(pull(df_problem1, log_vec))*(pull(df_problem1, norm_samp))
 as.numeric((as.factor(pull(df_problem1, log_vec))))*(pull(df_problem1, norm_samp))
 ```
+Note: Converting the log_vec to a factor and multiplying produces an error 'not meaningful for factors' since factors are not numeric variables. 
+
+
 
 
 HW1 Problem 2: 
-Part A:
-
-Create a data frame comprised of:
-x: a random sample of size 500 from a standard Normal distribution
-y: a random sample of size 500 from a standard Normal distribution
-A logical vector indicating whether x + y > 1
-A numeric vector created by coercing the above logical vector
-A factor vector created by coercing the above logical vector
+Part A:Create a data frame comprised of:
+* x: a random sample of size 500 from a standard Normal distribution
+* y: a random sample of size 500 from a standard Normal distribution
+* A logical vector indicating whether x + y > 1
+* A numeric vector created by coercing the above logical vector
+* A factor vector created by coercing the above logical vector
 
 ```{r create_df_2}
 #create a new dataframe for problem 2
@@ -100,10 +100,14 @@ df_problem2 = tibble(
 )
 ```
 
-HW1 Problem 2:
-Part B
 
-Write a short description of your vector using inline R code, including: * the size of the dataset (using nrow and ncol) * the mean, median, and standard deviation of x * the proportion of cases for which x + y > 1
+
+
+HW1 Problem 2:
+Part B: Write a short description of your vector using inline R code, including: 
+* the size of the dataset (using nrow and ncol) 
+* the mean, median, and standard deviation of x 
+* the proportion of cases for which x + y > 1
 
 The size of data frame titled 'df_problem2' is quantified by having `r nrow(df_problem2)` rows and `r ncol(df_problem2)` columns. 
 The mean of variable x is `r mean(pull(df_problem2, x))`. 
@@ -111,12 +115,11 @@ The median is `r median(pull(df_problem2, x))`.
 The standard deviation is `r sd(pull(df_problem2, x))`. 
 The proportion of cases for which x + Y > 1 is `r mean(pull(df_problem2, log_vec_2))`.
 
+
+
+
 HW1 Problem 2:
-Part C
-
-Make a scatterplot of y vs x; color points using the logical variable 
-
-Export your first scatterplot to your project directory using ggsave.
+Part C: Make a scatterplot of y vs x; color points using the logical variable, an export your first scatterplot to your project directory using ggsave.
 
 ```{r scatterplot_1}
 #load library and create scatterplot 1
@@ -127,18 +130,18 @@ ggsave("scatterplot_1.pdf", plot = last_plot(), height = 4, width = 6)
 ```
 
 
+
+
 HW1 Problem 2:
-Part D
-
-Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales.
-
-Color scales for scatterplot 1 and 3 with 'true/false' only is comprised of two colors (one for true and one for false) and color scale for scatterplot 2 with a scale from 0 to 100 is comprised of a gradient moving from black at 0 to blue at 100. 
+Part DL Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales.
 
 ```{r scatterplot_2_3}
 #create scatterplot 2 and 3
 ggplot(df_problem2, aes(x=x, y=y, color = num_vec_2)) + geom_point()
 ggplot(df_problem2, aes(x=x, y=y, color = factor_vec_2)) + geom_point()
 ```
+
+Note: Color scales for scatterplot 1 and 3 with 'true/false' only is comprised of two colors (one for true and one for false) and color scale for scatterplot 2 with a scale from 0 to 100 is comprised of a gradient moving from black at 0 to blue at 100. 
 
 
 
