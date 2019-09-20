@@ -9,9 +9,26 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+HW 1 Problem 1:
+Create a data frame comprised of:
 
-```{r}
+a random sample of size 8 from a standard Normal distribution,
+a logical vector indicating whether elements of the sample are greater than 0,
+a character vector of length 8, and
+a factor vector of length 8, with 3 different factor “levels”
+```{r create_df}
 library(tidyverse)
-
+set.seed(1234)
+df_problem1 = tibble(
+  norm_samp = rnorm(8),
+  log_vec = norm_samp > 0,
+  char_vec = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "January", "February", "March"),
+  factor_vec = factor(c("day","week","month","day","week","month","day","week"))
+)
 ```
+
+
+
+
+
 
